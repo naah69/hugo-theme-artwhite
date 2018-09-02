@@ -9,11 +9,12 @@
     </li>
     {{ end }}
 
-
+    {{ if .Site.Params.page_enable }}
     {{ range $pag.Pagers }}
     <li class="pagination__item">
         <a {{ if eq . $pag }} style="background-color:#404040;color: white;" {{ end }} aria-label="Goto page {{ .PageNumber }}" href="{{ .URL }}">{{ .PageNumber }}</a>
     </li>
+    {{ end }}
     {{ end }}
 
     {{ if $pag.HasNext }}

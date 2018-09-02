@@ -65,16 +65,20 @@ changyan_conf = ""
 #page conunt enable
 page_view_conter = true
 
+#页码开关
+#page button enable
+page_enable=true
+
 #悬浮目录配置
 #floatting directory config
 floatting_directory_enable=true
 
 #algolia 前端网站搜索配置
 #algolia web config
-algolia_search = true
+algolia_search = false
 algolia_appId = ""
 algolia_indexName = ""
-#adminkey
+#search key
 algolia_apiKey = ""
 
 #社交方式配置

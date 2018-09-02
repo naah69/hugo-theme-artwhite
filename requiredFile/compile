@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+hugo --theme=hugo-theme-cleanwhite --buildDrafts
+hugo-algolia -s
+

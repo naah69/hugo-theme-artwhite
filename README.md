@@ -1,11 +1,19 @@
-# Clean White v0.2 by Naah Theme for Hugo
+# Art White Theme for Hugo
 
-CleanWhite is a clean, elegant, but fully functional blog theme for Hugo. Here is a live [demo site](http://www.naah69.com) using this theme.
+Art White is a clean, elegant, but fully functional blog theme for Hugo. Here is a live [demo site](http://www.naah69.com) using this theme.
 
 It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-cleanwhite).
 
+## 1 New Function
+1. Changyan Comments
+2. Chinese Participles With Algolia(it need java environment)
+3. Busuanzi Page View Count
+4. Article Floatting Directory
+5. Optional Sidebar Tag
+6. Page Button
+7. Server、Compile And Deploy Script
 
-## Screenshots
+## 2 Screenshots
 
 **Home**
 ![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/fullscreenshot.png)
@@ -16,7 +24,7 @@ It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-clea
 **Search**
 ![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/search.png)
 
-## Quick Start
+## 3 Quick Start
 1.Go to the directory where you have your Hugo site and run:
 
 ```
@@ -34,94 +42,157 @@ $ git submodule add https://github.com/naah69/hugo-theme-cleanwhite.git themes/h
 
 2.copy all files in themes/hugo-theme-cleanwhite/requiredFile and paste to your project.
 
-3.Run  Hugo Build-in Server Locally
+3.Run Hugo Build-in Server Locally
 ```
-$ hugo server --buildDrafts
+$ ./server
 ```
 Now enter [`localhost:1313`](http://localhost:1313) in the address bar of your browser.
 
 
-## Configuration
-First, let's take a look at the [config.toml](https://github.com/zhaohuabing/hugo-cleanwhite-theme/tree/master/exampleSite/config.toml). It will be useful to learn how to customize your site. Feel free to play around with the settings.
+## 4 Configuration
+First, let's take a look at the [config.toml](https://github.com/naah69/hugo-theme-cleanwhite/blob/master/requiredFile/config.toml). It will be useful to learn how to customize your site. Feel free to play around with the settings.
 
-### Comments
-The optional comments system is powered by [Disqus](https://disqus.com). If you want to enable comments, create an account in Disqus and write down your shortname.
+### 4.1 Changyan Comments
+The optional comments system is powered by [Changyan](https://changyan.kuaizhan.com/). If you want to enable comments, create an account in Changyan and write down your config.
 
 ```toml
-disqusShortname = "your-disqus-short-name"
+#畅言评论配置
+#changyan comment config
+changyan_enable = true
+changyan_appid = ""
+changyan_conf = ""
 ```
-You can disable the comments system by leaving the `disqusShortname` empty.
+You can disable the comments system by changyan_enable.
 
-### Disqus in China
-Disqus is inaccessible in China. To get it to work, we can set up a proxy with [disqus-php-api](https://github.com/zhaohuabing/disqus-php-api) in a host which sets between the client browser and the Disqus server. The idea is that if Disqus can be reached in the guest network, the blog page will show the original Disqus comments UI, otherwise, it will downgrade and use the proxy to access the Disqus, the UI will be a little different, but the visitors can still write their comments on the page.
+### 4.2 Site Search with Algolia
+1.Follow this [tutorial](https://forestry.io/blog/search-with-algolia-in-hugo/#3-create-your-index-in-algolia) to create your index in Algolia. The index is just the storage of the indexing data of your site in the the cloud . The search page of CleanWhite theme will utilize this indexing data to do the search.
 
-The client side java script has already been integrated to CleanWhite them, but you need to set up a proxy server yourself.
-
-The proxy is written in php, which can be found here: https://github.com/zhaohuabing/disqus-php-api/tree/master/api
-
-You need to specify  your Disqus account information in the config.php.
-```
-define('PUBLIC_KEY', '');
-define('SECRET_KEY', '');
-define('DISQUS_USERNAME', '');
-define('DISQUS_EMAIL', '');
-define('DISQUS_PASSWORD', '');
-define('DISQUS_WEBSITE', '');
-define('DISQUS_SHORTNAME', '');
-```
-Set the proxy server address in the site config file of your Hugo project.
-```toml
-disqus_proxy = "http://yourdisqusproxy.com"
-```
-### Site Search with Algolia
-Follow this [tutorial](https://forestry.io/blog/search-with-algolia-in-hugo/#3-create-your-index-in-algolia) to create your index in Algolia. The index is just the storage of the indexing data of your site in the the cloud . The search page of CleanWhite theme will utilize this indexing data to do the search.
-
-Go to the directory where you have your Hugo site and run the following commands:
+2.Go to the directory where you have your Hugo site and run the following commands,it need node.js environment:
 ```bash
-$ npm init
-$ npm install atomic-algolia --save
+$ npm install hugo-algolia -g
 ```
-Next, open up the newly created package.json, where we’ll add an NPM script to update your index at Algolia. Find "scripts", and add the following:
-```josn
-"algolia": "atomic-algolia"
+
+3.Next, create new file named config.yaml, and add the following:
+```yaml
+---
+baseurl: "your baseurl"
+DefaultContentLanguage: "zh-cn"
+hasCJKLanguage: true
+languageCode: "zh-cn"
+title: "your site title"
+theme: "hugo-theme-cleanwhite"
+metaDataFormat: "yaml"
+algolia:
+  index: "your algolia index"
+  key: "your algolia admin key"
+  appID: "your algolia appID"
+---
+```
+
+4.Add the following variables to your hugo site config ( config.toml) so the search page can get access to algolia index data in the cloud:
+```toml
+#algolia 前端网站搜索配置
+#algolia web config
+algolia_search = true
+algolia_appId = ""
+algolia_indexName = ""
+#search key
+algolia_apiKey = ""
 ```
 Algolia index output format has already been supported by the CleanWhite theme, so you can just build your site, then you’ll find a file called algolia1.json in the root, which we can use to update your index in Algolia.
-Generate index file:
+
+5.Generate index file:Go to the directory where you have your Hugo site and run the following commands:
+
+Chinese And English Participles(it dependen compile a and need JAVA environment):
 ```bash
-$ hugo
+$ java -jar naah-algolia-builder-0.0.1.jar
 ```
-Create a new file in the root of your Hugo project called .env, and add the following contents:
+
+English Participles:
 ```bash
-ALGOLIA_APP_ID={{ YOUR_APP_ID }}
-ALGOLIA_ADMIN_KEY={{ YOUR_ADMIN_KEY }}
-ALGOLIA_INDEX_NAME={{ YOUR_INDEX_NAME }}
-ALGOLIA_INDEX_FILE={{ PATH/TO/algolia.json }}
-```
-Now you can push your index to Algolia by simply running:
-```bash
-$ npm run algolia
-```
-Add the following variables to your hugo site config so the search page can get access to algolia index data in the cloud:
- ```
-algolia_search = true
-algolia_appId = {{ YOUR_APP_ID }}
-algolia_indexName = {{ YOUR_INDEX_NAME }}
-algolia_apiKey = {{ YOUR_ADMIN_KEY }}
+$ ./compile
 ```
 Open search page in your browser: http://localhost:1313/search
 
-### Analytics
+### 4.3 Analytics
 
-You can optionally enable Google or Baidu Analytics. Type your tracking code in the
+You can optionally enable Baidu Analytics. Type your tracking code in the
 
 ```toml
-googleAnalytics = "UA-XXXXX-X"
 ba_track_id  = "XXXXXXXXXXXXXXXX"
 ```
-Leave the `googleAnalytics`  or 'ba_track_id ' key empty to disable it.
+Leave the 'ba_track_id ' key empty to disable it.
 
-## Thank
-Thanks for the great jobs of [huxblog Jekyll Theme](https://github.com/Huxpro/huxpro.github.io) and [Clean Blog Jekyll Theme](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll) which are the the two upstream projects CleanWhite Hugo theme is based on.
+### 4.4 Page View Count
 
-## Feedback
+The optional page view count is powered by [Busuanzi](http://busuanzi.ibruce.info/). If you want to enable page view count, write down your config.
+```toml
+page_view_conter = true
+```
+You can disable the page view count by page_view_conter.
+
+### 4.5 Article Floatting Directory
+
+The optional article floatting directory is power by me.If you want to enable it, write down your config.
+```toml
+floatting_directory_enable=true
+```
+You can disable the article floatting directory by floatting_directory_enable.
+
+### 4.6 Sidebar Tag
+If you want to enable it, write down your config.
+```toml
+sidebar_tags_enable = true
+```
+You can disable the sidebar tag by sidebar_tags_enable.
+
+### 4.7 Page Button
+If you want to enable it, write down your config.
+```toml
+page_enable = true
+```
+You can disable the page button by page_enable.
+
+## 5 Server、Compile And Deploy
+
+### 5.1 server script
+Run the follow commond.it will be started.
+```bash
+$ ./server
+```
+
+### 5.2 compile script
+
+Run the follow commond.it will be compile,but it will generate English Index Only.
+```bash
+$ ./compile
+```
+
+Run the follow commond.it will generate Chinese and English index.(must not delete complie,because it dependen compile script )
+```bash
+$ java -jar naah-algolia-builder-0.0.1.jar
+```
+
+### 5.3 deploy script
+
+if this is your first deploy,please init your git repository.Run the follow commond.
+```bash
+$ git init
+$ git remote add <short name> <remote git url>
+```
+
+open and modify the deploy script,replace the last commond in the deploy script.(if you have multi repository,you can write them)
+```bash
+$ git push -f <short name> <local branch name>:<remote branch name>
+```
+
+Next.Run the follow commond.it will compile html,generate Chinese and English Index and deploy to remote git repository one by one.
+```bash
+$ ./deploy
+```
+
+## 6 Thank
+Thanks for the great jobs of [hugo-theme-cleanwhite](https://github.com/zhaohuabing/hugo-theme-cleanwhite)  which is the  upstream project CleanWhite Hugo theme is based on.
+
+## 7 Feedback
 If you find any problems, please feel free to [raise an issue](https://github.com/zhaohuabing/hugo-theme-cleanwhite/issues/new) or create a pull request to fix it.

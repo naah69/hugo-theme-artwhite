@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+java -jar naah-algolia-builder-0.0.1.jar
+cd public
+git add -A
+git commit -m "commit"
+git push -f blog master:master

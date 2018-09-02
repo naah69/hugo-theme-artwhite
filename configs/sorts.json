@@ -1,0 +1,29 @@
+{
+    "": [
+        "readme.md", 
+        "readme_cn.md", 
+        "requiredfile", 
+        "layouts", 
+        "static", 
+        "archetypes", 
+        "images"
+    ], 
+    "__positions": {
+        "archetypes": 6, 
+        "requiredfile": 3, 
+        "layouts": 4, 
+        "static": 5, 
+        "images": 7, 
+        "readme.md": 1, 
+        "readme_cn.md": 2
+    }, 
+    "__raw_positions": {
+        "archetypes": 6, 
+        "requiredfile": 3, 
+        "layouts": 4, 
+        "static": 5, 
+        "images": 7, 
+        "readme.md": 1, 
+        "readme_cn.md": 2
+    }
+}
