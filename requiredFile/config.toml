@@ -1,0 +1,168 @@
+#基本配置
+#basic config
+baseUrl = "http://www.naah69.com/"
+baseurl = "http://www.naah69.com/"
+title = "Naah Blog"
+theme = "hugo-theme-cleanwhite"
+languageCode = "zh-cn"
+#每页文章数量
+#article size of page
+paginate = 10
+hasCJKLanguage = true
+
+#输出
+#output
+[outputs]
+home = ["HTML", "RSS", "Algolia"]
+
+#参数
+#parameter
+[params]
+#SEO配置
+#seo config
+SEOTitle = "那焱的博客"
+description = "Naah,那焱,一只正在通往机器学习的可爱的程序猿,热爱生活,拥抱变化,喜欢有关草木植物的任何事物,偶尔喜欢读读书写写诗"
+keyword = "Naah,那焱,NaYan,nayan,那焱的网络日志,那焱的博客,Naah Blog,博客,个人网站,Java,Python"
+
+#banner配置
+#banner config
+header_image = "img/home-bg.jpeg"
+slogan1 = "给别人一般如沐春风的温馨，锋芒可以不用太露。"
+slogan2 = "给自己保留随意任性的自由，名气可以不用太大。"
+
+# 测边栏设置
+#sidebar config
+#头像
+#head image
+sidebar_avatar = "img/avatar-naah.jpeg"
+#描述
+#master description
+sidebar_master_cn_name="那焱"
+sidebar_master_en_name="Naah"
+sidebar_master_professtion="JAVA后端开发工程师"
+sidebar_master_description="热爱生活,拥抱变化"
+
+#标签开关
+#sidebar tag enable
+sidebar_tags_enable = true
+
+#404配置
+#404 page condif
+image_404 = "img/404-bg.jpg"
+title_404 = "你来到了没有知识的荒原 :("
+
+# 百度统计配置
+#baidu analyze config
+ba_track_id = ""
+
+#畅言评论配置
+#changyan comment config
+changyan_enable = false
+changyan_appid = ""
+changyan_conf = ""
+
+# 不蒜子网页计数器配置
+#page conunt enable
+page_view_conter = true
+
+#悬浮目录配置
+#floatting directory config
+floatting_directory_enable=true
+
+#algolia 前端网站搜索配置
+#algolia web config
+algolia_search = true
+algolia_appId = ""
+algolia_indexName = ""
+#adminkey
+algolia_apiKey = ""
+
+#社交方式配置
+#social condig
+[params.social]
+rss            = false
+email          = "nayan3480232@163.com"
+#twitter       = "full profile url in twitter"
+#zhihu         =  ""
+weibo          = "https://weibo.com/naah"
+#facebook      = "full profile url in facebook"
+wechat         = "img/wx.jpg"
+github         = "https://github.com/naah69"
+#linkedin      = "full profile url in linkedin"
+
+
+#友情链接
+#friends link config
+[[params.friend_link]]
+title = "廖雪峰的官方网站"
+href =  "https://www.liaoxuefeng.com/"
+
+[[params.friend_link]]
+title = "大眼仔旭下载站"
+href =  "http://www.dayanzai.me/"
+
+[[params.friend_link]]
+title = "胡萝卜周下载站"
+href =  "http://www.carrotchou.blog/"
+
+[[params.friend_link]]
+title = "Xclient Mac下载站"
+href =  "http://xclient.info/"
+
+
+#收藏网站
+#bookmark link config
+[[params.bookmark_link]]
+title =  "并发编程网"
+href =  "http://ifeve.com/"
+
+[[params.bookmark_link]]
+title =  "牛客网"
+href =  "https://www.nowcoder.com/"
+[[params.bookmark_link]]
+title =  "赛码网"
+href =  "http://www.acmcoder.com/"
+
+
+#工具网站
+#tools link config
+[[params.tools_link]]
+title =  "Algolia"
+href = "https://www.liaoxuefeng.com/"
+
+[[params.tools_link]]
+title =  "畅言"
+href = "https://changyan.kuaizhan.com/"
+
+[[params.tools_link]]
+title =  "站长工具"
+href = "http://tool.chinaz.com/"
+
+[[params.tools_link]]
+title =  "程序猿在线工具箱"
+href = "https://tool.lu/"
+
+[[params.tools_link]]
+title =  "配置文件工具箱"
+href = "https://www.bejson.com/"
+
+[[params.tools_link]]
+title =  "文本对比"
+href = "http://www.jq22.com/textDifference"
+
+[[params.tools_link]]
+title =  "在线文件格式转换"
+href = "https://cloudconvert.com/formats"
+
+
+#Algolia 索引配置
+#Algolia backend config
+[outputFormats.Algolia]
+baseName = "algolia"
+isPlainText = true
+mediaType = "application/json"
+notAlternative = true
+[params.algolia]
+vars = ["title", "summary", "date", "publishdate", "expirydate", "permalink"]
+params = ["categories", "tags"]
+

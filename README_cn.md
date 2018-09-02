@@ -1,9 +1,12 @@
-# Clean White v0.2 by Naah Theme for Hugo
+# Clean White Theme for Hugo
 
-CleanWhite is a clean, elegant, but fully functional blog theme for Hugo. Here is a live [demo site](http://www.naah69.com) using this theme.
+CleanWhite is a clean, elegant, but fully functional blog theme for Hugo. Here is a live [demo site](https://zhaohuabing.com) using this theme.
 
-It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-cleanwhite).
+It is based on [huxblog Jekyll Theme](https://github.com/Huxpro/huxpro.github.io)
+and [Clean Blog Jekyll Theme](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll).
 
+These two upstream projects have done awesome jobs to create a blog theme, what I'm doing here is porting it to Hugo, of which I like the simplicity and the much faster compiling speed. Some other features which I think could be useful, such as site search with algolia and proxy for Disqus access in China, have also been built in the CleanWhite theme. Other fancy features of upstream projects are not supported by this Hugo theme, I'd like to make it as simple as possible and only focus on blog purpose, at least for now.
+While I created this theme, I followed the Hugo theme best practice and tried to make every part of the template as a replaceable partial html, so it could be much easier for you to make your customization based on it.
 
 ## Screenshots
 
@@ -17,29 +20,30 @@ It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-clea
 ![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/search.png)
 
 ## Quick Start
-1.Go to the directory where you have your Hugo site and run:
+Go to the directory where you have your Hugo site and run:
 
 ```
 $ mkdir themes
 $ cd themes
-$ git clone https://github.com/naah69/hugo-theme-cleanwhite.git
+$ git clone https://github.com/zhaohuabing/hugo-theme-cleanwhite.git
 ```
 
- If your site is already a git project, you may want to choose to add the cleanwhite theme as a submodule to avoid messing up your existing git repository.
+If your site is already a git project, you may want to choose to add the cleanwhite theme as a submodule to avoid messing up your existing git repository.
 
 ```
 $ mkdir themes
-$ git submodule add https://github.com/naah69/hugo-theme-cleanwhite.git themes/hugo-theme-cleanwhite
+$ git submodule add https://github.com/zhaohuabing/hugo-theme-cleanwhite.git themes/hugo-theme-cleanwhite
 ```
+Run  Hugo Build-in Server Locally
 
-2.copy all files in themes/hugo-theme-cleanwhite/requiredFile and paste to your project.
-
-3.Run  Hugo Build-in Server Locally
 ```
-$ hugo server --buildDrafts
+$ hugo serve -t  hugo-theme-cleanwhite
 ```
 Now enter [`localhost:1313`](http://localhost:1313) in the address bar of your browser.
 
+If you start from scratch, there is a working Hugo site configured with the CleanWhite theme in the [exampleSite](https://github.com/zhaohuabing/hugo-cleanwhite-theme/tree/master/exampleSite) directory.  You can use it as a starting point for your site.
+
+For more information read the official [setup guide](https://gohugo.io/overview/installing/) of Hugo
 
 ## Configuration
 First, let's take a look at the [config.toml](https://github.com/zhaohuabing/hugo-cleanwhite-theme/tree/master/exampleSite/config.toml). It will be useful to learn how to customize your site. Feel free to play around with the settings.

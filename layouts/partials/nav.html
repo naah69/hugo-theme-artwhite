@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ .Site.BaseURL }}/">{{ .Site.Title }}</a>
+            <a class="navbar-brand" href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,7 +22,7 @@
             <div class="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{{ .Site.BaseURL }}/">Home</a>
+                        <a href="{{ .Site.BaseURL }}">首页</a>
                     </li>
                     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
                     <li>
@@ -30,10 +30,13 @@
                     </li>
                     {{ end }}
 
+                    <li>
+                        <a href="{{ "about" | absURL }}">关于我</a>
+                    </li>
                     {{ if .Site.Params.algolia_search }}
-		            <li>
-                        <a href="{{ "search" | absURL }}">SEARCH <img src="{{ "img/search.png" | absURL }}" height="15" style="cursor: pointer;"></a>
-		            </li>
+                    <li>
+                        <a href="{{ "search" | absURL }}">搜索 <img src="{{ "img/search.png" | absURL }}" height="15" style="cursor: pointer;"></a>
+                    </li>
                     {{ end }}
                 </ul>
             </div>
@@ -46,25 +49,26 @@
     // Drop Bootstarp low-performance Navbar
     // Use customize navbar with high-quality material design animation
     // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
+    var $body = document.body;
     var $toggle = document.querySelector('.navbar-toggle');
     var $navbar = document.querySelector('#huxblog_navbar');
     var $collapse = document.querySelector('.navbar-collapse');
 
     $toggle.addEventListener('click', handleMagic)
-    function handleMagic(e){
+
+    function handleMagic(e) {
         if ($navbar.className.indexOf('in') > 0) {
-        // CLOSE
+            // CLOSE
             $navbar.className = " ";
             // wait until animation end.
-            setTimeout(function(){
+            setTimeout(function () {
                 // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
+                if ($navbar.className.indexOf('in') < 0) {
                     $collapse.style.height = "0px"
                 }
-            },400)
-        }else{
-        // OPEN
+            }, 400)
+        } else {
+            // OPEN
             $collapse.style.height = "auto"
             $navbar.className += " in";
         }

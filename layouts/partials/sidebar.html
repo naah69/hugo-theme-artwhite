@@ -1,4 +1,3 @@
-
 <!-- Sidebar Container -->
 <div class="
     col-lg-3 col-lg-offset-0
@@ -7,134 +6,181 @@
     col-xs-12
     sidebar-container
 ">
-    <!-- Featured Tags -->
-    {{ if .Site.Params.featured_tags }}
+    <!-- Short About -->
+    <section class="visible-md visible-lg">
+        <hr>
+        <h5><a href="">博主信息</a></h5>
+        <div class="short-about">
+            {{ with .Site.Params.sidebar_avatar }}
+            <img src="{{ . | absURL }}"/>
+            {{ end }}
+
+            <h3 style="margin-bottom: 20px;">
+                {{ with .Site.Params.sidebar_master_cn_name }}
+                {{ . }}
+                {{ end }}
+                &nbsp;
+                {{ with .Site.Params.sidebar_master_en_name }}
+                {{ . }}
+                {{ end }}
+            </h3>
+
+            {{ with .Site.Params.sidebar_master_professtion }}
+            <p>{{ . }}</p>
+            {{ end }}
+
+            {{ with .Site.Params.sidebar_master_description }}
+            <p>{{ . }}</p>
+            {{ end }}
+
+            <!-- SNS Link -->
+            <ul class="list-inline">
+                {{ if .Site.Params.social.rss }}
+                <li>
+                    <a href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title | default "" }}" >
+                    <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
+                       </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.email }}
+                <li>
+                    <a href="mailto:{{ . }}">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.twitter }}
+                <li>
+                    <a href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                       </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.zhihu }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa  fa-stack-1x fa-inverse">知</i>
+                       </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.weibo }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                       </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.facebook }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                       </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.wechat }}
+                <script src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
+                <script>
+                    function wx() {
+                        layer.open({
+                            type: 1,
+                            title: false,
+                            closeBtn: 1,
+                            area: ['500px', '500px'],
+                            skin: 'layui-layer-nobg', //没有背景色
+                            shadeClose: true,
+                            content: '<img src="{{ . | absURL}}" width="500px" height="500px">'
+                        });
+                    }
+                </script>
+                <li>
+
+                    <a target="_blank" href="javascript:wx()">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
+                       </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.github }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                       </span>
+                    </a>
+                </li>
+                {{ end }}
+                {{ with .Site.Params.social.linkedin }}
+                <li>
+                    <a target="_blank" href="{{ . }}">
+                       <span class="fa-stack fa-lg">
+                           <i class="fa fa-circle fa-stack-2x"></i>
+                           <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
+                       </span>
+                    </a>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </section>
+    <!-- 全部标签 -->
+    {{ if .Site.Params.sidebar_tags_enable }}
     <section>
         <hr class="hidden-sm hidden-xs">
-        <h5>FEATURED TAGS</h5>
+        <h5>全部标签</h5>
         <div class="tags">
-            {{ $featured_condition_size := .Site.Params.featured_condition_size }} 
             {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-               {{ if gt (len $taxonomy.Pages) $featured_condition_size }} 
-                    <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="{{ $name }}">
-                        {{ $name }}
-                    </a>
-               {{ end }} 
+            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="{{ $name }}">
+            {{ $name }}
+            </a>
             {{ end }}
         </div>
     </section>
     {{ end }}
 
-    <!-- Short About -->
-    <section class="visible-md visible-lg">
-        <hr><h5><a href="">ABOUT ME</a></h5>
-        <div class="short-about">
-            {{ with .Site.Params.sidebar_avatar }}
-            <img src="{{ . | absURL }}" />
-            {{ end }}
-            {{ with .Site.Params.sidebar_about_description }}
-                <p>{{ . }}</p>
-            {{ end }}
-           <!-- SNS Link -->
-           <ul class="list-inline"> 
-               {{ if .Site.Params.social.rss }}
-               <li>
-                   <a href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title | default "" }}" >
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
-               {{ with .Site.Params.social.twitter }}
-               <li>
-                   <a href="{{ . }}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
-               {{ with .Site.Params.social.zhihu }}
-               <li>
-                   <a target="_blank" href="{{ . }}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa  fa-stack-1x fa-inverse">知</i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
-               {{ with .Site.Params.social.weibo }}
-               <li>
-                   <a target="_blank" href="{{ . }}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
-               {{ with .Site.Params.social.facebook }}
-               <li>
-                   <a target="_blank" href="{{ . }}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
-               {{ with .Site.Params.social.wechat }}
-               <li>
-                   <a target="_blank" href="{{ . | absURL}}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
-               {{ with .Site.Params.social.github }}
-               <li>
-                   <a target="_blank" href="{{ . }}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-               {{ end }}
-               {{ with .Site.Params.social.linkedin }}
-               <li>
-                   <a target="_blank" href="{{ . }}">
-                       <span class="fa-stack fa-lg">
-                           <i class="fa fa-circle fa-stack-2x"></i>
-                           <i class="fa fa-linkedin fa-stack-1x fa-inverse"></i>
-                       </span>
-                   </a>
-               </li>
-       {{ end }}
-                </ul>
-            </div>
-    </section>
-   <!-- Friends Blog -->
-   <hr>
-   <h5>FRIENDS</h5>
-   <ul class="list-inline">
-       {{ range .Site.Params.friend_link }}
-           <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
-       {{ end }}
-   </ul>
-   
-    <!-- Bookmarks -->
-   <hr>
-   <h5>BOOKMARKS</h5>
-   <ul class="list-inline">
-   {{ range .Site.Params.bookmark_link }}
-           <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
-       {{ end }}
-   </ul>
+    <!-- 友情链接 Blog -->
+    <hr>
+    <h5>友情链接</h5>
+    <ul class="">
+        {{ range .Site.Params.friend_link }}
+        <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
+        {{ end }}
+    </ul>
+
+    <!-- 工具网站 -->
+    <hr>
+    <h5>工具网站</h5>
+    <ul class="">
+        {{ range .Site.Params.tools_link }}
+        <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
+        {{ end }}
+    </ul>
+    <!-- 收藏网站 -->
+    <hr>
+    <h5>收藏网站</h5>
+    <ul class="">
+        {{ range .Site.Params.bookmark_link }}
+        <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
+        {{ end }}
+    </ul>
 </div>

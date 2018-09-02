@@ -1,29 +1,82 @@
 {{ define "header" }}
 <!-- Post Header -->
 <style type="text/css">
-    header.intro-header{
+    header.intro-header {
         background-image: url('{{ if .Params.image }}{{ .Params.image | absURL }}{{ else }}{{ .Site.Params.header_image | absURL}}{{ end }}')
     }
+
+    #floatting_dir {
+        position: fixed;
+        display: none;
+        width: auto;
+        height: auto;
+        font-size: 13px;
+    }
 </style>
-<header class="intro-header" >
+<script language="javascript">
+    $(document).ready(function () {
+        $("#floatting_dir").css('top', $("#container_div").offset().top + 'px');
+        $('#floatting_dir').css('left', '0px');
+
+
+        function ishide() {
+
+            if ($('.container').width() <= 720) {
+                $("#floatting_dir").css('display', 'none');
+            } else {
+                $("#floatting_dir").css('display', 'block');
+            }
+        }
+
+        $(window).scroll(function () {
+            ishide();
+            if (($(window).scrollTop() != 0) && ($('#floatting_dir').css('display') == 'block')) {
+                $("#floatting_dir").css('top', window.innerHeight / 2 + 'px');
+            } else {
+                $("#floatting_dir").css('display', 'none');
+            }
+        });
+
+        window.onresize = function () {
+            ishide();
+        }
+
+        $("#dir_btn").click(function () {
+            switch ($('#floatting_dir #TableOfContents').css('display')) {
+                case "block":
+                    $('#floatting_dir #TableOfContents').hide();
+                    break;
+                case "none":
+                    $('#floatting_dir #TableOfContents').show();
+                    break;
+                default:
+                    break;
+            }
+        });
+    });
+
+
+</script>
+<header class="intro-header">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
-                       {{ range .Params.tags }}
-                       <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" title="{{ . }}">
-                           {{ . }}
+                        {{ range .Params.tags }}
+                        <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" title="{{ . }}">
+                        {{ . }}
                         </a>
                         {{ end }}
                     </div>
                     <h1>{{ .Title }}</h1>
                     <h2 class="subheading">{{ .Params.subtitle }}</h2>
-                    <span  class="meta">Posted by {{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Title }}{{ end }} on {{ .Date.Format "Monday, January 2, 2006" }}
+                    <span class="meta">Posted by {{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Title }}{{ end }} on {{ .Date.Format "Monday, Jan 02,2006 15:04:05" }}
                         {{ if .Site.Params.page_view_conter }}
                         {{ partial "page_view_counter.html" . }}
                         {{ end }}
-                    </span>
+                    </span><br>
+
                 </div>
             </div>
         </div>
@@ -34,74 +87,96 @@
 {{ define "main" }}
 <!-- Post Content -->
 <article>
-    <div class="container">
+    <div class="container" id="container_div">
         <div class="row">
 
             <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                post-container">
+                col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            post-container">
 
-		{{ if eq .Params.showtoc false }}
-		{{ else }}
-                <header>
-                <h2>TOC</h2>
-                </header>
-                {{.TableOfContents}}
-		{{ end }}
-		{{ .Content }}
+                {{ if eq .Params.showtoc false }}
+                {{ else }}
 
+                {{if .TableOfContents }}
+
+                {{ if .Site.Params.floatting_directory_enable }}
+                <!--悬浮目录-->
+                <div id="floatting_dir">
+                    <header>
+                        <h2 id="dir_btn">悬浮目录</h2>
+                    </header>
+                    {{.TableOfContents}}
+                </div>
+                {{end}}
+
+                <div>
+                    <header>
+                        <h2>目录</h2>
+                    </header>
+                    {{.TableOfContents}}
+                </div>
+                {{end}}
+
+                {{ end }}
+
+                {{ .Content }}
+                {{ if .Site.Params.changyan_enable }}
+                <div id="cyReward" role="cylabs" data-use="reward" style="text-align: center"></div>
+                <div id="cyEmoji" role="cylabs" data-use="emoji"></div>
+                {{end}}
                 <hr>
 
                 <ul class="pager">
                     {{ if .Prev }}
                     <li class="previous">
-                        <a href="{{ .Prev.URL }}" data-toggle="tooltip" data-placement="top" title="{{ .Prev.Title}}">&larr; Previous Post</a>
+                        <a href="{{ .Prev.URL }}" data-toggle="tooltip" data-placement="top" title="{{ .Prev.Title}}">&larr; 上一篇</a>
                     </li>
                     {{ end }}
                     {{ if .Next }}
                     <li class="next">
-                        <a href="{{ .Next.URL }}" data-toggle="tooltip" data-placement="top" title="{{ .Next.Title}}">Next Post &rarr;</a>
+                        <a href="{{ .Next.URL }}" data-toggle="tooltip" data-placement="top" title="{{ .Next.Title}}">下一篇 &rarr;</a>
                     </li>
                     {{ end }}
                 </ul>
 
-            {{ partial "comments.html" . }}
+                {{ partial "comments.html" . }}
 
             </div>
+            {{ partial "sidebar.html" . }}
             <!-- Sidebar Container -->
             <div class="
                 col-lg-8 col-lg-offset-2
                 col-md-10 col-md-offset-1
                 sidebar-container">
 
-                <!-- Featured Tags -->
+                <!-- 全部标签 -->
                 <section>
                     <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <h5><a href="/tags/">全部标签</a></h5>
                     <div class="tags">
-                    {{ $featured_condition_size := .Site.Params.featured_condition_size }} 
-                    {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-                       {{ if gt (len $taxonomy.Pages) $featured_condition_size }} 
-                            <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="{{ $name }}">
-                                {{ $name }}
-                            </a>
-                       {{ end }} 
-                    {{ end }}
+                        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+                        <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="{{ $name }}">
+                        {{ $name }}
+                        </a>
+                        {{ end }}
                     </div>
                 </section>
 
-                <!-- Friends Blog -->
+                <!-- 友情链接 Blog -->
                 <hr>
-                <h5>FRIENDS</h5>
+                <h5>友情链接</h5>
                 <ul class="list-inline">
                     {{ range .Site.Params.friend_link }}
-                        <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
+                    <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
                     {{ end }}
                 </ul>
             </div>
         </div>
+
     </div>
 </article>
 
