@@ -17,13 +17,16 @@ It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-clea
 ## 2 Screenshots
 
 **Home**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/fullscreenshot.png)
+
+![screenshot](https://raw.githubusercontent.com/naah69/hugo-theme-artwhite/master/images/fullscreenshot.png)
 
 **Post**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/post.png)
+
+![screenshot](https://raw.githubusercontent.com/naah69/hugo-theme-artwhite/master/images/post.png)
 
 **Search**
-![screenshot](https://raw.githubusercontent.com/naah69/hugo-theme-artwhite/master/images/search.png){:height="20%" width="20%"}
+
+![screenshot](https://raw.githubusercontent.com/naah69/hugo-theme-artwhite/master/images/search.png)
 
 ## 3 Quick Start
 1.Go to the directory where you have your Hugo site and run:
