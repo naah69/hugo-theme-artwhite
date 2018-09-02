@@ -1,131 +1,212 @@
-# Clean White Theme for Hugo
+# Art White Theme for Hugo
 
-CleanWhite is a clean, elegant, but fully functional blog theme for Hugo. Here is a live [demo site](https://zhaohuabing.com) using this theme.
+# [English Doc](https://github.com/naah69/hugo-theme-artwhite/blob/master/README.md)
 
-It is based on [huxblog Jekyll Theme](https://github.com/Huxpro/huxpro.github.io)
-and [Clean Blog Jekyll Theme](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll).
+Art White是Hugo的一款博客主题. 这是 [示例网站](http://www.naah69.com) .
 
-These two upstream projects have done awesome jobs to create a blog theme, what I'm doing here is porting it to Hugo, of which I like the simplicity and the much faster compiling speed. Some other features which I think could be useful, such as site search with algolia and proxy for Disqus access in China, have also been built in the CleanWhite theme. Other fancy features of upstream projects are not supported by this Hugo theme, I'd like to make it as simple as possible and only focus on blog purpose, at least for now.
-While I created this theme, I followed the Hugo theme best practice and tried to make every part of the template as a replaceable partial html, so it could be much easier for you to make your customization based on it.
+它基于 [Clean White](https://github.com/zhaohuabing/hugo-theme-cleanwhite)主题进行开发.
 
-## Screenshots
+## 1 新功能
+1. 畅言评论
+2. Algolia英语分词(需要node.js环境)
+3. Algolia中文分词(需要java环境)
+4. 不蒜子网页计数器
+5. 文章浮动目录
+6. 侧边栏标签
+7. 页码按钮
+8. 服务、编译、部署脚本
 
-**Home**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/fullscreenshot.png)
+## 2 截图
 
-**Post**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/post.png)
+### 2.1 首页
 
-**Search**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/search.png)
+![screenshot](https://raw.githubusercontent.com/naah69/hugo-theme-artwhite/master/images/fullscreenshot.png)
 
-## Quick Start
-Go to the directory where you have your Hugo site and run:
+### 2.2 文章页
+
+![screenshot](https://raw.githubusercontent.com/naah69/hugo-theme-artwhite/master/images/post.png)
+
+### 2.3 搜索页
+
+![screenshot](https://raw.githubusercontent.com/naah69/hugo-theme-artwhite/master/images/search.png)
+
+## 3 快速开始
+1.进入Hugo项目的目录运行下面语句:
 
 ```
 $ mkdir themes
 $ cd themes
-$ git clone https://github.com/zhaohuabing/hugo-theme-cleanwhite.git
+$ git clone https://github.com/naah69/hugo-theme-cleanwhite.git
 ```
 
-If your site is already a git project, you may want to choose to add the cleanwhite theme as a submodule to avoid messing up your existing git repository.
+ 如果你的站点已经是一个git仓库，可能你想建立一个子模块，避免弄乱git仓库的话，运行下面语句.
 
 ```
 $ mkdir themes
-$ git submodule add https://github.com/zhaohuabing/hugo-theme-cleanwhite.git themes/hugo-theme-cleanwhite
+$ git submodule add https://github.com/naah69/hugo-theme-cleanwhite.git themes/hugo-theme-cleanwhite
 ```
-Run  Hugo Build-in Server Locally
 
+2.把themes/hugo-theme-cleanwhite/requiredFile下的所有文件覆盖到你的项目目录中.
+
+3.运行hugo本地服务命令
 ```
-$ hugo serve -t  hugo-theme-cleanwhite
+$ ./server
 ```
-Now enter [`localhost:1313`](http://localhost:1313) in the address bar of your browser.
+现在用浏览器进入 [`http://localhost:1313`](http://localhost:1313)
 
-If you start from scratch, there is a working Hugo site configured with the CleanWhite theme in the [exampleSite](https://github.com/zhaohuabing/hugo-cleanwhite-theme/tree/master/exampleSite) directory.  You can use it as a starting point for your site.
 
-For more information read the official [setup guide](https://gohugo.io/overview/installing/) of Hugo
+## 4 配置
+首先让我们看看 [config.toml](https://github.com/naah69/hugo-theme-artwhite/blob/master/requiredFile/config.toml)。了解如何自定义你的网站，随意配置这些配置项。
 
-## Configuration
-First, let's take a look at the [config.toml](https://github.com/zhaohuabing/hugo-cleanwhite-theme/tree/master/exampleSite/config.toml). It will be useful to learn how to customize your site. Feel free to play around with the settings.
-
-### Comments
-The optional comments system is powered by [Disqus](https://disqus.com). If you want to enable comments, create an account in Disqus and write down your shortname.
-
+### 4.1 畅言评论
+我们使用的是[畅言](https://changyan.kuaizhan.com/)提供的评论服务，如果你想开启评论，去畅言创建一个账号，并在配置文件中填写以下配置。
 ```toml
-disqusShortname = "your-disqus-short-name"
+#畅言评论配置
+#changyan comment config
+changyan_enable = true
+changyan_appid = ""
+changyan_conf = ""
 ```
-You can disable the comments system by leaving the `disqusShortname` empty.
+你也可以通过changyan_enable来关闭评论。
 
-### Disqus in China
-Disqus is inaccessible in China. To get it to work, we can set up a proxy with [disqus-php-api](https://github.com/zhaohuabing/disqus-php-api) in a host which sets between the client browser and the Disqus server. The idea is that if Disqus can be reached in the guest network, the blog page will show the original Disqus comments UI, otherwise, it will downgrade and use the proxy to access the Disqus, the UI will be a little different, but the visitors can still write their comments on the page.
+### 4.2 Algolia全站搜索
+1.跟着 [这篇教程](https://forestry.io/blog/search-with-algolia-in-hugo/#3-create-your-index-in-algolia) 在Algolia中创建你的索引.
+我们需要将网站的索引存在网上。ArtWhite主题的搜索页面将对这个网站的插件进行适配
 
-The client side java script has already been integrated to CleanWhite them, but you need to set up a proxy server yourself.
-
-The proxy is written in php, which can be found here: https://github.com/zhaohuabing/disqus-php-api/tree/master/api
-
-You need to specify  your Disqus account information in the config.php.
+2.进入hugo项目的目录，运行下面的命令,这条命令需要 **node.js** 环境:
+```bash
+$ npm install hugo-algolia -g
 ```
-define('PUBLIC_KEY', '');
-define('SECRET_KEY', '');
-define('DISQUS_USERNAME', '');
-define('DISQUS_EMAIL', '');
-define('DISQUS_PASSWORD', '');
-define('DISQUS_WEBSITE', '');
-define('DISQUS_SHORTNAME', '');
+
+3.然后我们创建一个叫**config.yaml**的文件, 输入下面的配置:
+```yaml
+---
+baseurl: "your baseurl"
+DefaultContentLanguage: "zh-cn"
+hasCJKLanguage: true
+languageCode: "zh-cn"
+title: "your site title"
+theme: "hugo-theme-cleanwhite"
+metaDataFormat: "yaml"
+algolia:
+  index: "your algolia index"
+  key: "your algolia admin key"
+  appID: "your algolia appID"
+---
 ```
-Set the proxy server address in the site config file of your Hugo project.
+
+4.在config.toml中加入下面的配置， 这样搜索页面才能访问到algolia中的索引数据:
 ```toml
-disqus_proxy = "http://yourdisqusproxy.com"
-```
-### Site Search with Algolia
-Follow this [tutorial](https://forestry.io/blog/search-with-algolia-in-hugo/#3-create-your-index-in-algolia) to create your index in Algolia. The index is just the storage of the indexing data of your site in the the cloud . The search page of CleanWhite theme will utilize this indexing data to do the search.
-
-Go to the directory where you have your Hugo site and run the following commands:
-```bash
-$ npm init
-$ npm install atomic-algolia --save
-```
-Next, open up the newly created package.json, where we’ll add an NPM script to update your index at Algolia. Find "scripts", and add the following:
-```josn
-"algolia": "atomic-algolia"
-```
-Algolia index output format has already been supported by the CleanWhite theme, so you can just build your site, then you’ll find a file called algolia1.json in the root, which we can use to update your index in Algolia.
-Generate index file:
-```bash
-$ hugo
-```
-Create a new file in the root of your Hugo project called .env, and add the following contents:
-```bash
-ALGOLIA_APP_ID={{ YOUR_APP_ID }}
-ALGOLIA_ADMIN_KEY={{ YOUR_ADMIN_KEY }}
-ALGOLIA_INDEX_NAME={{ YOUR_INDEX_NAME }}
-ALGOLIA_INDEX_FILE={{ PATH/TO/algolia.json }}
-```
-Now you can push your index to Algolia by simply running:
-```bash
-$ npm run algolia
-```
-Add the following variables to your hugo site config so the search page can get access to algolia index data in the cloud:
- ```
+#algolia 前端网站搜索配置
+#algolia web config
 algolia_search = true
-algolia_appId = {{ YOUR_APP_ID }}
-algolia_indexName = {{ YOUR_INDEX_NAME }}
-algolia_apiKey = {{ YOUR_ADMIN_KEY }}
+algolia_appId = ""
+algolia_indexName = ""
+#search key
+algolia_apiKey = ""
 ```
-Open search page in your browser: http://localhost:1313/search
+ArtWhite主题已经支持Algolia, 所以你可以构建的网站。
 
-### Analytics
+5.生成索引文件: 进入hugo项目的目录然后允许下面的命令:
 
-You can optionally enable Google or Baidu Analytics. Type your tracking code in the
+中英文分词(它需要JAVA环境):
+```bash
+$ java -jar naah-algolia-builder-0.0.1.jar
+```
+
+英文分词:
+```bash
+$ ./compile
+```
+打开你的搜索页: http://localhost:1313/search
+
+### 4.3 统计
+
+我们可以开启和关闭百度统计. 在配置中填写你的id
 
 ```toml
-googleAnalytics = "UA-XXXXX-X"
 ba_track_id  = "XXXXXXXXXXXXXXXX"
 ```
-Leave the `googleAnalytics`  or 'ba_track_id ' key empty to disable it.
+ba_track_id为空则是不开启百度统计
 
-## Thank
-Thanks for the great jobs of [huxblog Jekyll Theme](https://github.com/Huxpro/huxpro.github.io) and [Clean Blog Jekyll Theme](https://github.com/BlackrockDigital/startbootstrap-clean-blog-jekyll) which are the the two upstream projects CleanWhite Hugo theme is based on.
+### 4.4 页面计数
 
-## Feedback
-If you find any problems, please feel free to [raise an issue](https://github.com/zhaohuabing/hugo-theme-cleanwhite/issues/new) or create a pull request to fix it.
+页面计数我们使用的是[不蒜子](http://busuanzi.ibruce.info/)提供的服务. 如果你想开启这个功能，填写下面的配置.
+```toml
+page_view_conter = true
+```
+你也可以通过page_view_conter 来关闭它
+
+### 4.5 文章浮动目录
+
+文章浮动目录是我自己写的.如果你想开启他，填写下面的配置。
+```toml
+floatting_directory_enable=true
+```
+你也可以通过floatting_directory_enable来关闭它
+
+### 4.6 侧边栏标签
+如果你想开启侧边栏标签，就在配置中填写它
+```toml
+sidebar_tags_enable = true
+```
+你也可以通过sidebar_tags_enable来关闭它
+
+### 4.7 页码按钮
+如果你想开启页码，就在配置中填写它
+```toml
+page_enable = true
+```
+你也可以通过page_enable来关闭它
+
+## 5 服务、编译和部署
+
+### 5.1 本地服务脚本
+运行下面的命令，本地服务就会启动
+```bash
+$ ./server
+```
+[`http://localhost:1313`](http://localhost:1313)
+
+### 5.2 编译脚本
+
+运行下面的命令，将会编译html和索引，但是只有英文索引
+```bash
+$ ./compile
+```
+
+运行下面的命令，将会编译html和中英文索引。(千万别删complie,因为它依赖compile脚本 )
+```bash
+$ java -jar naah-algolia-builder-0.0.1.jar
+```
+
+### 5.3 部署脚本
+
+如果这是你第一次部署,先初始化git仓库.运行下面的命令
+```bash
+$ git init
+$ git remote add <仓库短名> <git仓库链接>
+```
+
+**修改脚本**
+
+如果你只使用英文索引,用下面的命令替换'java -jar naah-algolia-builder-0.0.1.jar'
+```bash
+./compile
+```
+
+修改deploy脚本,吧最后一行换掉.(如果你有多个仓库，可以把他们都写上)
+```bash
+git push -f <仓库短名> <本地分支名>:<远程分支名>
+```
+
+然后运行下面的命令，它将按顺序的编译html，生成索引，然后部署到远程仓库.
+```bash
+$ ./deploy
+```
+
+## 6 感谢
+感谢[hugo-theme-cleanwhite](https://github.com/zhaohuabing/hugo-theme-cleanwhite)这个art white 的基础主题。
+
+## 7 反馈
+如果你遇到什么问题, 可以[提问题](https://github.com/naah69/hugo-theme-artwhite/issues/new)或者发现bug进行pr

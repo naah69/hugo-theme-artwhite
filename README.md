@@ -1,8 +1,10 @@
 # Art White Theme for Hugo
 
-Art White is a  blog theme for Hugo. Here is a live [demo site](http://www.naah69.com) using this theme.
+# [中文文档](https://github.com/naah69/hugo-theme-artwhite/blob/master/README_cn.md)
 
-It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-cleanwhite).
+Art White is a blog theme for Hugo. Here is a live [demo site](http://www.naah69.com) using this theme.
+
+It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-ArtWhite).
 
 ## 1 New Function
 1. Changyan Comments
@@ -16,15 +18,15 @@ It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-clea
 
 ## 2 Screenshots
 
-**Home**
+### 2.1 Home
 
 ![screenshot](https://raw.githubusercontent.com/naah69/hugo-theme-artwhite/master/images/fullscreenshot.png)
 
-**Post**
+### 2.2 Post
 
 ![screenshot](https://raw.githubusercontent.com/naah69/hugo-theme-artwhite/master/images/post.png)
 
-**Search**
+### 2.3 Search
 
 ![screenshot](https://raw.githubusercontent.com/naah69/hugo-theme-artwhite/master/images/search.png)
 
@@ -34,17 +36,17 @@ It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-clea
 ```
 $ mkdir themes
 $ cd themes
-$ git clone https://github.com/naah69/hugo-theme-cleanwhite.git
+$ git clone https://github.com/naah69/hugo-theme-ArtWhite.git
 ```
 
- If your site is already a git project, you may want to choose to add the cleanwhite theme as a submodule to avoid messing up your existing git repository.
+ If your site is already a git project, you may want to choose to add the ArtWhite theme as a submodule to avoid messing up your existing git repository.
 
 ```
 $ mkdir themes
-$ git submodule add https://github.com/naah69/hugo-theme-cleanwhite.git themes/hugo-theme-cleanwhite
+$ git submodule add https://github.com/naah69/hugo-theme-ArtWhite.git themes/hugo-theme-ArtWhite
 ```
 
-2.copy all files in themes/hugo-theme-cleanwhite/requiredFile and paste to your project.
+2.copy all files in themes/hugo-theme-ArtWhite/requiredFile and cover to your project.
 
 3.Run Hugo Build-in Server Locally
 ```
@@ -69,7 +71,7 @@ changyan_conf = ""
 You can disable the comments system by changyan_enable.
 
 ### 4.2 Site Search with Algolia
-1.Follow this [tutorial](https://forestry.io/blog/search-with-algolia-in-hugo/#3-create-your-index-in-algolia) to create your index in Algolia. The index is just the storage of the indexing data of your site in the the cloud . The search page of CleanWhite theme will utilize this indexing data to do the search.
+1.Follow this [tutorial](https://forestry.io/blog/search-with-algolia-in-hugo/#3-create-your-index-in-algolia) to create your index in Algolia. The index is just the storage of the indexing data of your site in the the cloud . The search page of ArtWhite theme will utilize this indexing data to do the search.
 
 2.Go to the directory where you have your Hugo site and run the following commands,it need **node.js** environment:
 ```bash
@@ -84,7 +86,7 @@ DefaultContentLanguage: "zh-cn"
 hasCJKLanguage: true
 languageCode: "zh-cn"
 title: "your site title"
-theme: "hugo-theme-cleanwhite"
+theme: "hugo-theme-ArtWhite"
 metaDataFormat: "yaml"
 algolia:
   index: "your algolia index"
@@ -103,9 +105,9 @@ algolia_indexName = ""
 #search key
 algolia_apiKey = ""
 ```
-Algolia index output format has already been supported by the CleanWhite theme, so you can just build your site, then you’ll find a file called algolia1.json in the root, which we can use to update your index in Algolia.
+Algolia index output format has already been supported by the ArtWhite theme, so you can just build your site.
 
-5.Generate index file:Go to the directory where you have your Hugo site and run the following commands:
+5.Generate index file: Go to the directory where you have your Hugo site and run the following commands:
 
 Chinese And English Participles(it dependen compile a and need JAVA environment):
 ```bash
@@ -167,12 +169,12 @@ $ ./server
 
 ### 5.2 compile script
 
-Run the follow commond.it will be compile,but it will generate English Index Only.
+Run the follow commond.it will be compile html and index,but it will generate English Index Only.
 ```bash
 $ ./compile
 ```
 
-Run the follow commond.it will generate Chinese and English index.(must not delete complie,because it dependen compile script )
+Run the follow commond.it will compile html and generate Chinese and English index.(must not delete complie,because it dependen compile script )
 ```bash
 $ java -jar naah-algolia-builder-0.0.1.jar
 ```
@@ -185,9 +187,17 @@ $ git init
 $ git remote add <short name> <remote git url>
 ```
 
-open and modify the deploy script,replace the last commond in the deploy script.(if you have multi repository,you can write them)
+**modify the deploy script**
+
+if you use English index only,the follow command replace 'java -jar naah-algolia-builder-0.0.1.jar'
 ```bash
-$ git push -f <short name> <local branch name>:<remote branch name>
+./compile
+```
+
+
+replace the last commond in the deploy script.(if you have multi repository,you can write them)
+```bash
+git push -f <short name> <local branch name>:<remote branch name>
 ```
 
 Next.Run the follow commond.it will compile html,generate Chinese and English Index and deploy to remote git repository one by one.
@@ -196,7 +206,7 @@ $ ./deploy
 ```
 
 ## 6 Thank
-Thanks for the great jobs of [hugo-theme-cleanwhite](https://github.com/zhaohuabing/hugo-theme-cleanwhite)  which is the  upstream project CleanWhite Hugo theme is based on.
+Thanks for the great jobs of [hugo-theme-ArtWhite](https://github.com/zhaohuabing/hugo-theme-ArtWhite)  which is the  upstream project ArtWhite Hugo theme is based on.
 
 ## 7 Feedback
 If you find any problems, please feel free to [raise an issue](https://github.com/naah69/hugo-theme-artwhite/issues/new) or create a pull request to fix it.
