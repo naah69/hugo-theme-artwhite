@@ -23,7 +23,7 @@ It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-clea
 ![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/post.png)
 
 **Search**
-![screenshot](https://raw.githubusercontent.com/zhaohuabing/hugo-theme-cleanwhite/master/images/search.png)
+![screenshot](https://raw.githubusercontent.com/naah69/hugo-theme-artwhite/master/images/search.png){:height="20%" width="20%"}
 
 ## 3 Quick Start
 1.Go to the directory where you have your Hugo site and run:
