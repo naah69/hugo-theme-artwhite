@@ -162,26 +162,26 @@ You can disable the page button by page_enable.
 ## 5 Server、Compile And Deploy
 
 ### 5.1 server script
-Run the follow commond.it will be started.
+Run the following commond.it will be started.
 ```bash
 $ ./server
 ```
 
 ### 5.2 compile script
 
-Run the follow commond.it will be compile html and index,but it will generate English Index Only.
+Run the following commond.it will be compile html and index,but it will generate English Index Only.
 ```bash
 $ ./compile
 ```
 
-Run the follow commond.it will compile html and generate Chinese and English index.(must not delete complie,because it dependen compile script )
+Run the following commond.it will compile html and generate Chinese and English index.(must not delete complie,because it dependen compile script )
 ```bash
 $ java -jar naah-algolia-builder-0.0.1.jar
 ```
 
 ### 5.3 deploy script
 
-if this is your first deploy,please init your git repository.Run the follow commond.
+if this is your first deploy,please init your git repository.Run the following commond.
 ```bash
 $ git init
 $ git remote add <short name> <remote git url>
@@ -189,7 +189,7 @@ $ git remote add <short name> <remote git url>
 
 **modify the deploy script**
 
-if you use English index only,the follow command replace 'java -jar naah-algolia-builder-0.0.1.jar'
+if you use English index only,the following command replace 'java -jar naah-algolia-builder-0.0.1.jar'
 ```bash
 ./compile
 ```
@@ -200,7 +200,7 @@ replace the last commond in the deploy script.(if you have multi repository,you 
 git push -f <short name> <local branch name>:<remote branch name>
 ```
 
-Next.Run the follow commond.it will compile html,generate Chinese and English Index and deploy to remote git repository one by one.
+Next.Run the following commond.it will compile html,generate Chinese and English Index and deploy to remote git repository one by one.
 ```bash
 $ ./deploy
 ```
