@@ -4,7 +4,7 @@
 
 Art White is a blog theme for Hugo. Here is a live [demo site](http://www.naah69.com) using this theme.
 
-It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-ArtWhite).
+It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-cleanwhite).
 
 ## 1 New Function
 1. Changyan Comments
@@ -36,17 +36,17 @@ It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-ArtW
 ```
 $ mkdir themes
 $ cd themes
-$ git clone https://github.com/naah69/hugo-theme-ArtWhite.git
+$ git clone https://github.com/naah69/hugo-theme-artwhite.git
 ```
 
  If your site is already a git project, you may want to choose to add the ArtWhite theme as a submodule to avoid messing up your existing git repository.
 
 ```
 $ mkdir themes
-$ git submodule add https://github.com/naah69/hugo-theme-ArtWhite.git themes/hugo-theme-ArtWhite
+$ git submodule add https://github.com/naah69/hugo-theme-artwhite.git themes/hugo-theme-artwhite
 ```
 
-2.copy all files in themes/hugo-theme-ArtWhite/requiredFile and cover to your project.
+2.copy all files in themes/hugo-theme-artwhite/requiredFile and cover to your project.
 
 3.Run Hugo Build-in Server Locally
 ```
@@ -86,7 +86,7 @@ DefaultContentLanguage: "zh-cn"
 hasCJKLanguage: true
 languageCode: "zh-cn"
 title: "your site title"
-theme: "hugo-theme-ArtWhite"
+theme: "hugo-theme-artwhite"
 metaDataFormat: "yaml"
 algolia:
   index: "your algolia index"
@@ -206,7 +206,7 @@ $ ./deploy
 ```
 
 ## 6 Thank
-Thanks for the great jobs of [hugo-theme-ArtWhite](https://github.com/zhaohuabing/hugo-theme-ArtWhite)  which is the  upstream project ArtWhite Hugo theme is based on.
+Thanks for the great jobs of [hugo-theme-artwhite](https://github.com/zhaohuabing/hugo-theme-artwhite)  which is the  upstream project ArtWhite Hugo theme is based on.
 
 ## 7 Feedback
 If you find any problems, please feel free to [raise an issue](https://github.com/naah69/hugo-theme-artwhite/issues/new) or create a pull request to fix it.

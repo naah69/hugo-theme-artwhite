@@ -4,7 +4,7 @@ DefaultContentLanguage: "zh-cn"
 hasCJKLanguage: true
 languageCode: "zh-cn"
 title: "your site title"
-theme: "hugo-theme-cleanwhite"
+theme: "hugo-theme-artwhite"
 metaDataFormat: "yaml"
 algolia:
   index: "your algolia index"

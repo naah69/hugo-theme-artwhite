@@ -3,7 +3,7 @@
 baseUrl = "http://www.naah69.com/"
 baseurl = "http://www.naah69.com/"
 title = "Naah Blog"
-theme = "hugo-theme-cleanwhite"
+theme = "hugo-theme-artwhite"
 languageCode = "zh-cn"
 #每页文章数量
 #article size of page

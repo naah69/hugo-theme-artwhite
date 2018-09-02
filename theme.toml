@@ -17,7 +17,7 @@ min_version = 0.1
 
 # If porting an existing theme
 [original]
-  name = "hugo-theme-cleanwhite"
+  name = "hugo-theme-artwhite"
   author = "zhaohuabing"
   homepage = "https://zhaohuabing.com/"
-  repo = "https://github.com/zhaohuabing/hugo-theme-cleanwhite"
+  repo = "https://github.com/zhaohuabing/hugo-theme-artwhite"

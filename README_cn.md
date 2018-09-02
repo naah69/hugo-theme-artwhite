@@ -36,17 +36,17 @@ Art White是Hugo的一款博客主题. 这是 [示例网站](http://www.naah69.c
 ```
 $ mkdir themes
 $ cd themes
-$ git clone https://github.com/naah69/hugo-theme-cleanwhite.git
+$ git clone https://github.com/naah69/hugo-theme-artwhite.git
 ```
 
  如果你的站点已经是一个git仓库，可能你想建立一个子模块，避免弄乱git仓库的话，运行下面语句.
 
 ```
 $ mkdir themes
-$ git submodule add https://github.com/naah69/hugo-theme-cleanwhite.git themes/hugo-theme-cleanwhite
+$ git submodule add https://github.com/naah69/hugo-theme-artwhite.git themes/hugo-theme-artwhite
 ```
 
-2.把themes/hugo-theme-cleanwhite/requiredFile下的所有文件覆盖到你的项目目录中.
+2.把themes/hugo-theme-artwhite/requiredFile下的所有文件覆盖到你的项目目录中.
 
 3.运行hugo本地服务命令
 ```
@@ -86,7 +86,7 @@ DefaultContentLanguage: "zh-cn"
 hasCJKLanguage: true
 languageCode: "zh-cn"
 title: "your site title"
-theme: "hugo-theme-cleanwhite"
+theme: "hugo-theme-artwhite"
 metaDataFormat: "yaml"
 algolia:
   index: "your algolia index"
