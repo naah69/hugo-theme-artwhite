@@ -1,17 +1,18 @@
 # Art White Theme for Hugo
 
-Art White is a clean, elegant, but fully functional blog theme for Hugo. Here is a live [demo site](http://www.naah69.com) using this theme.
+Art White is a  blog theme for Hugo. Here is a live [demo site](http://www.naah69.com) using this theme.
 
 It is based on [Clean WhiteTheme](https://github.com/zhaohuabing/hugo-theme-cleanwhite).
 
 ## 1 New Function
 1. Changyan Comments
-2. Chinese Participles With Algolia(it need java environment)
-3. Busuanzi Page View Count
-4. Article Floatting Directory
-5. Optional Sidebar Tag
-6. Page Button
-7. Server、Compile And Deploy Script
+2. English Participles With Algolia(it need node.js environment)
+3. Chinese Participles With Algolia(it need java environment)
+4. Busuanzi Page View Count
+5. Article Floatting Directory
+6. Optional Sidebar Tag
+7. Page Button
+8. Server、Compile And Deploy Script
 
 ## 2 Screenshots
 
@@ -50,7 +51,7 @@ Now enter [`localhost:1313`](http://localhost:1313) in the address bar of your b
 
 
 ## 4 Configuration
-First, let's take a look at the [config.toml](https://github.com/naah69/hugo-theme-cleanwhite/blob/master/requiredFile/config.toml). It will be useful to learn how to customize your site. Feel free to play around with the settings.
+First, let's take a look at the [config.toml](https://github.com/naah69/hugo-theme-artwhite/blob/master/requiredFile/config.toml). It will be useful to learn how to customize your site. Feel free to play around with the settings.
 
 ### 4.1 Changyan Comments
 The optional comments system is powered by [Changyan](https://changyan.kuaizhan.com/). If you want to enable comments, create an account in Changyan and write down your config.
@@ -67,7 +68,7 @@ You can disable the comments system by changyan_enable.
 ### 4.2 Site Search with Algolia
 1.Follow this [tutorial](https://forestry.io/blog/search-with-algolia-in-hugo/#3-create-your-index-in-algolia) to create your index in Algolia. The index is just the storage of the indexing data of your site in the the cloud . The search page of CleanWhite theme will utilize this indexing data to do the search.
 
-2.Go to the directory where you have your Hugo site and run the following commands,it need node.js environment:
+2.Go to the directory where you have your Hugo site and run the following commands,it need **node.js** environment:
 ```bash
 $ npm install hugo-algolia -g
 ```
@@ -195,4 +196,4 @@ $ ./deploy
 Thanks for the great jobs of [hugo-theme-cleanwhite](https://github.com/zhaohuabing/hugo-theme-cleanwhite)  which is the  upstream project CleanWhite Hugo theme is based on.
 
 ## 7 Feedback
-If you find any problems, please feel free to [raise an issue](https://github.com/zhaohuabing/hugo-theme-cleanwhite/issues/new) or create a pull request to fix it.
+If you find any problems, please feel free to [raise an issue](https://github.com/naah69/hugo-theme-artwhite/issues/new) or create a pull request to fix it.

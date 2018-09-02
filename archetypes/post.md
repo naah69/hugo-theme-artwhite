@@ -5,6 +5,6 @@ description: ""
 date: {{ .Date }}
 author: Naah
 image: ""
-tags: [""]
-categories: [""]
+tags: ["Test"]
+categories: ["Test"]
 ---
