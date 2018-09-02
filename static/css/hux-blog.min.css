@@ -1016,3 +1016,14 @@ body {
 .page-fullscreen footer .copyright a:hover {
     color: #ddd
 }
+.categories_list{
+    margin-right: 10px;
+    color: gray;
+}
+.categories_list > a{
+    color: gray;
+}
+.categories_list a i{
+    font-size: 20px;
+
+}

@@ -46,7 +46,7 @@ $ mkdir themes
 $ git submodule add https://github.com/naah69/hugo-theme-artwhite.git themes/hugo-theme-artwhite
 ```
 
-2.copy all files in themes/hugo-theme-artwhite/requiredFile and cover to your project.
+2.copy all files in `themes/hugo-theme-artwhite/requiredFile` and cover to your project.
 
 3.Run Hugo Build-in Server Locally
 ```
@@ -68,17 +68,17 @@ changyan_enable = true
 changyan_appid = ""
 changyan_conf = ""
 ```
-You can disable the comments system by changyan_enable.
+You can disable the comments system by `changyan_enable`.
 
 ### 4.2 Site Search with Algolia
 1.Follow this [tutorial](https://forestry.io/blog/search-with-algolia-in-hugo/#3-create-your-index-in-algolia) to create your index in Algolia. The index is just the storage of the indexing data of your site in the the cloud . The search page of ArtWhite theme will utilize this indexing data to do the search.
 
-2.Go to the directory where you have your Hugo site and run the following commands,it need **node.js** environment:
+2.Go to the directory where you have your Hugo site and run the following commands,it need `node.js` environment:
 ```bash
 $ npm install hugo-algolia -g
 ```
 
-3.Next, create new file named config.yaml, and add the following:
+3.Next, create new file named `config.yaml`, and add the following:
 ```yaml
 ---
 baseurl: "your baseurl"
@@ -95,7 +95,7 @@ algolia:
 ---
 ```
 
-4.Add the following variables to your hugo site config ( config.toml) so the search page can get access to algolia index data in the cloud:
+4.Add the following variables to your hugo site config (` config.toml`) so the search page can get access to algolia index data in the cloud:
 ```toml
 #algolia 前端网站搜索配置
 #algolia web config
@@ -109,7 +109,7 @@ Algolia index output format has already been supported by the ArtWhite theme, so
 
 5.Generate index file: Go to the directory where you have your Hugo site and run the following commands:
 
-Chinese And English Participles(it dependen compile a and need JAVA environment):
+Chinese And English Participles(it dependen compile a and need `JAVA environment`):
 ```bash
 $ java -jar naah-algolia-builder-0.0.1.jar
 ```
@@ -127,7 +127,7 @@ You can optionally enable Baidu Analytics. Type your tracking code in the
 ```toml
 ba_track_id  = "XXXXXXXXXXXXXXXX"
 ```
-Leave the 'ba_track_id ' key empty to disable it.
+Leave the '`ba_track_id` ' key empty to disable it.
 
 ### 4.4 Page View Count
 
@@ -135,7 +135,7 @@ The optional page view count is powered by [Busuanzi](http://busuanzi.ibruce.inf
 ```toml
 page_view_conter = true
 ```
-You can disable the page view count by page_view_conter.
+You can disable the page view count by `page_view_conter`
 
 ### 4.5 Article Floatting Directory
 
@@ -143,21 +143,21 @@ The optional article floatting directory is power by me.If you want to enable it
 ```toml
 floatting_directory_enable=true
 ```
-You can disable the article floatting directory by floatting_directory_enable.
+You can disable the article floatting directory by `floatting_directory_enable`.
 
 ### 4.6 Sidebar Tag
 If you want to enable it, write down your config.
 ```toml
 sidebar_tags_enable = true
 ```
-You can disable the sidebar tag by sidebar_tags_enable.
+You can disable the sidebar tag by `sidebar_tags_enable`.
 
 ### 4.7 Page Button
 If you want to enable it, write down your config.
 ```toml
 page_enable = true
 ```
-You can disable the page button by page_enable.
+You can disable the page button by `page_enable`.
 
 ## 5 Server、Compile And Deploy
 
@@ -174,7 +174,7 @@ Run the following commond.it will be compile html and index,but it will generate
 $ ./compile
 ```
 
-Run the following commond.it will compile html and generate Chinese and English index.(must not delete complie,because it dependen compile script )
+Run the following commond.it will compile html and generate Chinese and English index.(must not delete `complie`,because it dependen `compile` script )
 ```bash
 $ java -jar naah-algolia-builder-0.0.1.jar
 ```
@@ -189,13 +189,13 @@ $ git remote add <short name> <remote git url>
 
 **modify the deploy script**
 
-if you use English index only,the following command replace 'java -jar naah-algolia-builder-0.0.1.jar'
+if you use English index only,the following command replace '`java -jar naah-algolia-builder-0.0.1.jar`'
 ```bash
 ./compile
 ```
 
 
-replace the last commond in the deploy script.(if you have multi repository,you can write them)
+replace the last commond in the `deploy` script.(if you have multi repository,you can write them)
 ```bash
 git push -f <short name> <local branch name>:<remote branch name>
 ```

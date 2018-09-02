@@ -15,7 +15,7 @@
 </style>
 <script language="javascript">
     $(document).ready(function () {
-        $("#floatting_dir").css('top', $("#container_div").offset().top + 'px');
+        $("#floatting_dir").css('top', window.innerHeight/3 + 'px');
         $('#floatting_dir').css('left', '0px');
 
 
@@ -29,9 +29,10 @@
         }
 
         $(window).scroll(function () {
+            console.log($(window).scrollTop());
             ishide();
             if (($(window).scrollTop() != 0) && ($('#floatting_dir').css('display') == 'block')) {
-                $("#floatting_dir").css('top', window.innerHeight / 2 + 'px');
+                $("#floatting_dir").css('top', window.innerHeight / 4 + 'px');
             } else {
                 $("#floatting_dir").css('display', 'none');
             }
@@ -63,12 +64,17 @@
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 <div class="post-heading">
                     <div class="tags">
+                        {{range .Params.categories}}
+                        <a href="{{ "categories/" | absLangURL }}{{ . | urlize }}" target="_blank" ><i class="fa fa-folder-o" ></i>&nbsp;{{.}}</a>
+                        {{end}}
                         {{ range .Params.tags }}
-                        <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" title="{{ . }}">
-                        {{ . }}
+                        <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" title="{{ . }}"  target="_blank">
+                        <i class="fa fa-tags" ></i>&nbsp;{{ . }}
                         </a>
                         {{ end }}
+
                     </div>
+
                     <h1>{{ .Title }}</h1>
                     <h2 class="subheading">{{ .Params.subtitle }}</h2>
                     <span class="meta">Posted by {{ if .Params.author }}{{ .Params.author }}{{ else }}{{ .Site.Title }}{{ end }} on {{ .Date.Format "Monday, Jan 02,2006 15:04:05" }}

@@ -46,7 +46,7 @@ $ mkdir themes
 $ git submodule add https://github.com/naah69/hugo-theme-artwhite.git themes/hugo-theme-artwhite
 ```
 
-2.把themes/hugo-theme-artwhite/requiredFile下的所有文件覆盖到你的项目目录中.
+2.把`themes/hugo-theme-artwhite/requiredFile`下的所有文件覆盖到你的项目目录中.
 
 3.运行hugo本地服务命令
 ```
@@ -67,18 +67,18 @@ changyan_enable = true
 changyan_appid = ""
 changyan_conf = ""
 ```
-你也可以通过changyan_enable来关闭评论。
+你也可以通过`changyan_enable`来关闭评论。
 
 ### 4.2 Algolia全站搜索
 1.跟着 [这篇教程](https://forestry.io/blog/search-with-algolia-in-hugo/#3-create-your-index-in-algolia) 在Algolia中创建你的索引.
 我们需要将网站的索引存在网上。ArtWhite主题的搜索页面将对这个网站的插件进行适配
 
-2.进入hugo项目的目录，运行下面的命令,这条命令需要 **node.js** 环境:
+2.进入hugo项目的目录，运行下面的命令,这条命令需要 `node.js` 环境:
 ```bash
 $ npm install hugo-algolia -g
 ```
 
-3.然后我们创建一个叫**config.yaml**的文件, 输入下面的配置:
+3.然后我们创建一个叫`config.yaml`的文件, 输入下面的配置:
 ```yaml
 ---
 baseurl: "your baseurl"
@@ -95,7 +95,7 @@ algolia:
 ---
 ```
 
-4.在config.toml中加入下面的配置， 这样搜索页面才能访问到algolia中的索引数据:
+4.在`config.toml`中加入下面的配置， 这样搜索页面才能访问到algolia中的索引数据:
 ```toml
 #algolia 前端网站搜索配置
 #algolia web config
@@ -109,7 +109,7 @@ ArtWhite主题已经支持Algolia, 所以你可以构建的网站。
 
 5.生成索引文件: 进入hugo项目的目录然后允许下面的命令:
 
-中英文分词(它需要JAVA环境):
+中英文分词(它需要`JAVA`环境):
 ```bash
 $ java -jar naah-algolia-builder-0.0.1.jar
 ```
@@ -127,7 +127,7 @@ $ ./compile
 ```toml
 ba_track_id  = "XXXXXXXXXXXXXXXX"
 ```
-ba_track_id为空则是不开启百度统计
+`ba_track_id`为空则是不开启百度统计
 
 ### 4.4 页面计数
 
@@ -135,7 +135,7 @@ ba_track_id为空则是不开启百度统计
 ```toml
 page_view_conter = true
 ```
-你也可以通过page_view_conter 来关闭它
+你也可以通过`page_view_conter` 来关闭它
 
 ### 4.5 文章浮动目录
 
@@ -143,21 +143,21 @@ page_view_conter = true
 ```toml
 floatting_directory_enable=true
 ```
-你也可以通过floatting_directory_enable来关闭它
+你也可以通过`floatting_directory_enable`来关闭它
 
 ### 4.6 侧边栏标签
 如果你想开启侧边栏标签，就在配置中填写它
 ```toml
 sidebar_tags_enable = true
 ```
-你也可以通过sidebar_tags_enable来关闭它
+你也可以通过`sidebar_tags_enable`来关闭它
 
 ### 4.7 页码按钮
 如果你想开启页码，就在配置中填写它
 ```toml
 page_enable = true
 ```
-你也可以通过page_enable来关闭它
+你也可以通过`page_enable`来关闭它
 
 ## 5 服务、编译和部署
 
@@ -175,7 +175,7 @@ $ ./server
 $ ./compile
 ```
 
-运行下面的命令，将会编译html和中英文索引。(千万别删complie,因为它依赖compile脚本 )
+运行下面的命令，将会编译html和中英文索引。(千万别删`complie`,因为它依赖`compile`脚本 )
 ```bash
 $ java -jar naah-algolia-builder-0.0.1.jar
 ```
@@ -190,12 +190,12 @@ $ git remote add <仓库短名> <git仓库链接>
 
 **修改脚本**
 
-如果你只使用英文索引,用下面的命令替换'java -jar naah-algolia-builder-0.0.1.jar'
+如果你只使用英文索引,用下面的命令替换`java -jar naah-algolia-builder-0.0.1.jar`
 ```bash
 ./compile
 ```
 
-修改deploy脚本,吧最后一行换掉.(如果你有多个仓库，可以把他们都写上)
+修改`deploy`脚本,把最后一行换掉.(如果你有多个仓库，可以把他们都写上)
 ```bash
 git push -f <仓库短名> <本地分支名>:<远程分支名>
 ```
