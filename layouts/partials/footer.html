@@ -6,8 +6,8 @@
                 <ul class="list-inline text-center">
                     {{ if .Site.Params.social.rss }}
                     <li>
-                        <a href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title | default "" }}" >
-                        <span class="fa-stack fa-lg">
+                        <a href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title | default "" }}"  target="_blank"  >
+                        <span class="fa-stack fa-lg"> target="_blank"
                                <i class="fa fa-circle fa-stack-2x"></i>
                                <i class="fa fa-rss fa-stack-1x fa-inverse"></i>
                            </span>
@@ -27,7 +27,7 @@
 
                     {{ with .Site.Params.social.twitter }}
                     <li>
-                        <a href="{{ . }}">
+                        <a href="{{ . }}"  target="_blank" >
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>

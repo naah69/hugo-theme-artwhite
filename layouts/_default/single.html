@@ -153,34 +153,7 @@
 
             </div>
             {{ partial "sidebar.html" . }}
-            <!-- Sidebar Container -->
-            <div class="
-                col-lg-8 col-lg-offset-2
-                col-md-10 col-md-offset-1
-                sidebar-container">
 
-                <!-- 全部标签 -->
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">全部标签</a></h5>
-                    <div class="tags">
-                        {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
-                        <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="{{ $name }}">
-                        {{ $name }}
-                        </a>
-                        {{ end }}
-                    </div>
-                </section>
-
-                <!-- 友情链接 Blog -->
-                <hr>
-                <h5>友情链接</h5>
-                <ul class="list-inline">
-                    {{ range .Site.Params.friend_link }}
-                    <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
-                    {{ end }}
-                </ul>
-            </div>
         </div>
 
     </div>

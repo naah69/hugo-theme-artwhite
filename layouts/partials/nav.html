@@ -26,7 +26,7 @@
                     </li>
                     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
                     <li>
-                        <a href="{{ "categories/" | absLangURL }}{{ $name | urlize }}">{{ $name }}</a>
+                        <a href="{{ "categories/" | absLangURL }}{{ $name | urlize }}"  target="_blank" >{{ $name }}</a>
                     </li>
                     {{ end }}
 
