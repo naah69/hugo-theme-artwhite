@@ -45,9 +45,11 @@
         $("#dir_btn").click(function () {
             switch ($('#floatting_dir #TableOfContents').css('display')) {
                 case "block":
+                    $("#dir_btn").text("悬浮目录+")
                     $('#floatting_dir #TableOfContents').hide();
                     break;
                 case "none":
+                    $("#dir_btn").text("悬浮目录-")
                     $('#floatting_dir #TableOfContents').show();
                     break;
                 default:

@@ -70,7 +70,7 @@
                     <!-- Huabing: add wechat QR code link -->
                     {{ with .Site.Params.social.wechat }}
                     <li>
-                        <a target="_blank" href="{{ . | absURL }}">
+                        <a target="_blank" href="javascript:wx()">
                             <span class="fa-stack fa-lg">
                                 <i class="fa fa-circle fa-stack-2x"></i>
                                 <i class="fa fa-wechat fa-stack-1x fa-inverse"></i>
@@ -203,6 +203,29 @@
         s.parentNode.insertBefore(hm, s);
     })();
 </script>
+{{ end }}
+
+<!-- Baidu Record -->
+{{ if .Site.Params.baidu_record_enable }}
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+{{ end }}
+
+<!-- Google Record -->
+{{ if .Site.Params.google_record_enable }}
+
 {{ end }}
 
 

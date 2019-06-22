@@ -19,10 +19,10 @@
             also mask any touch event of tags, unfortunately.
         -->
         <div id="huxblog_navbar">
-            <div class="navbar-collapse">
+            <div class="navbar-collapse" style="max-height: 1000px;" >
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="{{ .Site.BaseURL }}">首页</a>
+                        <a href="{{ .Site.BaseURL }}">HOME</a>
                     </li>
                     {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
                     <li>
@@ -31,11 +31,11 @@
                     {{ end }}
 
                     <li>
-                        <a href="{{ "about" | absURL }}">关于我</a>
+                        <a href="{{ "about" | absURL }}">About Me</a>
                     </li>
                     {{ if .Site.Params.algolia_search }}
                     <li>
-                        <a href="{{ "search" | absURL }}">搜索 <img src="{{ "img/search.png" | absURL }}" height="15" style="cursor: pointer;"></a>
+                        <a href="{{ "search" | absURL }}">Search <img src="{{ "img/search.png" | absURL }}" height="15" style="cursor: pointer;"></a>
                     </li>
                     {{ end }}
                 </ul>

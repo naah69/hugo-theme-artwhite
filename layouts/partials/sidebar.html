@@ -9,7 +9,7 @@
     <!-- Short About -->
     <section class="visible-md visible-lg">
         <hr>
-        <h5><a href="">博主信息</a></h5>
+        <h5><a href="{{ "about" | absURL }}" target="_blank">博主信息</a></h5>
         <div class="short-about">
             {{ with .Site.Params.sidebar_avatar }}
             <img src="{{ . | absURL }}"/>
@@ -97,21 +97,21 @@
                 {{ end }}
                 {{ with .Site.Params.social.wechat }}
                 <script src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
-                <script>
-                    function wx() {
-                        layer.open({
-                            type: 1,
-                            title: false,
-                            closeBtn: 1,
-                            area: ['500px', '500px'],
-                            skin: 'layui-layer-nobg', //没有背景色
-                            shadeClose: true,
-                            content: '<img src="{{ . | absURL}}" width="500px" height="500px">'
-                        });
-                    }
-                </script>
-                <li>
 
+                <li>
+                    <script>
+                        function wx() {
+                            layer.open({
+                                type: 1,
+                                title: false,
+                                closeBtn: 1,
+                                area: ['500px', '500px'],
+                                skin: 'layui-layer-nobg', //没有背景色
+                                shadeClose: true,
+                                content: '<img src="{{ . | absURL}}" width="500px" height="500px">'
+                            });
+                        }
+                    </script>
                     <a target="_blank" href="javascript:wx()">
                        <span class="fa-stack fa-lg">
                            <i class="fa fa-circle fa-stack-2x"></i>

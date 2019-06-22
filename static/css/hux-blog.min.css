@@ -95,6 +95,9 @@ a img:hover, a img:focus {
 article {
     overflow-x: hidden
 }
+article::-webkit-scrollbar {
+    display: none;
+}
 
 blockquote {
     color: gray;
@@ -1027,3 +1030,6 @@ body {
     font-size: 20px;
 
 }
+/*畅言去广告*/
+#feedAv{ transform: scale(0);position: absolute !important;z-index: -9999;top: -1000px;display: none;}
+

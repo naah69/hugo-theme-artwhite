@@ -25,8 +25,9 @@
     </p>
 <div>
     <span class="categories_list">
+        <i class="fa fa-folder-o" ></i>
         {{range .Params.categories}}
-        <a href="{{ "categories/" | absLangURL }}{{ . | urlize }}"  target="_blank"><i class="fa fa-folder-o" ></i>&nbsp;{{.}}</a>
+        <a href="{{ "categories/" | absLangURL }}{{ . | urlize }}"  target="_blank">{{.}}</a>、
         {{end}}
     </span>
     <span class="categories_list">

@@ -1,7 +1,7 @@
 #基本配置
 #basic config
-baseUrl = "http://www.naah69.com/"
-baseurl = "http://www.naah69.com/"
+baseUrl = "https://www.naah69.com/"
+baseurl = "https://www.naah69.com/"
 title = "Naah Blog"
 theme = "hugo-theme-artwhite"
 languageCode = "zh-cn"
@@ -90,7 +90,7 @@ email          = "nayan3480232@163.com"
 #zhihu         =  ""
 weibo          = "https://weibo.com/naah"
 #facebook      = "full profile url in facebook"
-wechat         = "img/wx.jpg"
+wechat         = "http://ws1.sinaimg.cn/large/ed1d2fb9gy1fw0ntoycqcj20rr0rs3zo.jpg"
 github         = "https://github.com/naah69"
 #linkedin      = "full profile url in linkedin"
 
