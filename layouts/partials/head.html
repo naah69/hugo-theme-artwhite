@@ -5,13 +5,19 @@
     <meta name="referrer" content="same-origin">
     <meta name="referrer" content="no-referrer">
     {{ if .Params.description }}
-    <meta name="description" content="{{ .Params.description }}">
+    <meta name="description" content="{{ .Params.description }}" />
     {{ else }}
-    <meta name="description" content="{{ .Site.Params.description }}">
+    <meta name="description" content="{{ .Site.Params.description }}" />
     {{ end }}
-    <meta name="keyword"  content="{{ .Site.Params.keyword }}">
+
+    {{ if .Params.keyword }}
+    <meta name="keywords" content="{{ .Params.keyword }}" />
+    {{ else }}
+    <meta name="keywords" content="{{ .Site.Params.keyword }}" />
+    {{ end }}
+
     <link rel="shortcut icon" href="{{ "img/favicon.ico" | absURL }}">
-    <title>{{ if .Title }}{{ .Title }} {{ .Site.Params.SEOTitle }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}</title>
+    <title>{{ if .Title }}{{ .Title }}-{{ .Site.Params.SEOTitle }}{{ else }}{{ .Site.Params.SEOTitle }}{{ end }}</title>
     <link rel="canonical" href="{{ .URL | absURL }}">
     {{ if .Site.Params.google_record_enable }}
     <meta name="google-site-verification" content="{{ .Site.Params.google_site_verification_id }}" />
@@ -59,7 +65,7 @@
         .hljs-ln{border-collapse:collapse}.hljs-ln td{padding-left:1em}
         .hljs-ln-n:before{content:attr(data-line-number);margin-right:1em;}
         .highlight pre, pre, .highlight .hll{padding: 6px 0px}
-        .hljs{padding: 8px}
+        .hljs{padding: 8px 0px}
     </style>
     {{end}}
 

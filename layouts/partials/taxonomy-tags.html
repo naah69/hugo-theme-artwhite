@@ -1,0 +1,44 @@
+
+<div class="container">
+    <div class="row">
+        <!-- USE SIDEBAR -->
+        <!-- Post Container -->
+        <div class="
+            col-lg-8 col-lg-offset-1
+            col-md-8 col-md-offset-1
+            col-sm-12
+            col-xs-12
+            post-container
+        ">
+
+
+
+            {{ if .Site.Params.sidebar_tags_enable }}
+
+            {{ range $index, $element := $.Paginator.Pages }}
+
+
+            <div class="post-preview">
+                <a href="{{ "/tags/" | relLangURL }}{{ $element.Title | urlize }}" target="_blank">
+                <h2 class="post-title">
+
+                    <span>{{$element.Title}} &nbsp;({{len $element.Data.tag}}) </span>
+
+                </h2>
+                </a>
+            </div>
+            <hr>
+
+            {{ end }}
+
+            {{ end }}
+            {{ partial "pagination.html" . }}
+        </div>
+
+
+        {{ partial "sidebar.html" . }}
+    </div>
+</div>
+
+
+

@@ -1,6 +1,7 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 subtitle: ""
+keyword: ""
 description: ""
 date: {{ .Date }}
 author: Naah

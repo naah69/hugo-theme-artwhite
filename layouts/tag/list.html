@@ -1,8 +1,10 @@
+
 {{ define "header" }}
 {{ partial "top.html" . }}
 {{ end }}
 
-
 {{ define "main" }}
-  {{ partial "category.html" . }}
+{{ $paginator := .Paginate (.Data.Pages )}}
+{{ partial "taxonomy-tags.html" . }}
+
 {{ end }}

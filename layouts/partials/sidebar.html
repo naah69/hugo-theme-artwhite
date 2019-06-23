@@ -147,13 +147,21 @@
     {{ if .Site.Params.sidebar_tags_enable }}
     <section>
         <hr class="hidden-sm hidden-xs">
-        <h5>全部标签</h5>
+        <h5><a href="{{ "/tags/" | relLangURL }}"   target="_blank" >标签展示</a></h5>
         <div class="tags">
-            {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+            {{ range $key, $value := first $.Site.Params.sidebar_tags_show_num .Site.Taxonomies.tags.ByCount }}
+            {{ $name := .Name }}
+            {{ $count := .Count }}
             <a href="{{ "/tags/" | relLangURL }}{{ $name | urlize }}" title="{{ $name }}"  target="_blank" >
-            {{ $name }}
+            {{ $name }}({{ $count }})
             </a>
+
             {{ end }}
+
+            <a href="{{ "/tags/" | relLangURL }}"  target="_blank" >
+            全部标签
+            </a>
+
         </div>
     </section>
     {{ end }}
@@ -162,7 +170,7 @@
     <hr>
     <h5>友情链接</h5>
     <ul class="">
-        {{ range .Site.Params.friend_link }}
+        {{  range .Site.Params.friend_link }}
         <li><a target="_blank" href="{{.href}}">{{.title}}</a></li>
         {{ end }}
     </ul>
