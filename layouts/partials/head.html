@@ -2,8 +2,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="referrer" content="same-origin">
-    <meta name="referrer" content="no-referrer">
+    <!--<meta name="referrer" content="same-origin">-->
+    <!--<meta name="referrer" content="no-referrer">-->
     {{ if .Params.description }}
     <meta name="description" content="{{ .Params.description }}" />
     {{ else }}
@@ -67,6 +67,23 @@
         .highlight pre, pre, .highlight .hll{padding: 6px 0px}
         .hljs{padding: 8px 0px}
         em{color: red}
+        #index nav ul{margin-left: 0px;padding-left: 0em;list-style: none;margin-bottom:0em;}
+        #index nav ul li {padding-left: 0em;}
+        #index nav ul li ul {padding-left: 1em;}
+
+        @media screen and (max-width: 500px){
+            #index nav ul{margin-left: 0px;padding-left: 0em;list-style: none;margin-bottom:0em;}
+            #index nav ul li {padding-left: 0em;}
+            #index nav ul li ul {padding-left: 1em;}
+        }
+
+        @media screen and (max-width: 768px){
+            #index nav ul{margin-left: 0px;padding-left: 0em;list-style: none;margin-bottom:0em;}
+            #index nav ul li {padding-left: 0em;}
+            #index nav ul li ul {padding-left: 1em;}
+        }
+
+
     </style>
     {{end}}
 

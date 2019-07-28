@@ -13,28 +13,39 @@
         font-size: 13px;
     }
 </style>
+<!-- 悬浮目录js -->
 <script language="javascript">
-    $(document).ready(function () {
-        $("#floatting_dir").css('top', window.innerHeight/3 + 'px');
-        $('#floatting_dir').css('left', '0px');
 
+    $(document).ready(function () {
+        top();
+        $('#floatting_dir').css('left', '0px');
+        $("#floatting_dir").css('display', 'block');
+
+        function top() {
+            if ($('.container').width() <= 720) {
+                $("#floatting_dir").css('top', '0px');
+            } else {
+
+                $("#floatting_dir").css('top', window.innerHeight / 9 + 'px');
+            }
+        }
 
         function ishide() {
 
             if ($('.container').width() <= 720) {
-                $("#floatting_dir").css('display', 'none');
+                $("#floatting_dir").css('top', '0px');
+                // $("#dir_btn_close").hide()
+                // $('#floatting_dir #index').hide();
+                // $('#floatting_dir header').css("border-bottom","");
             } else {
                 $("#floatting_dir").css('display', 'block');
             }
         }
 
         $(window).scroll(function () {
-            console.log($(window).scrollTop());
             ishide();
             if (($(window).scrollTop() != 0) && ($('#floatting_dir').css('display') == 'block')) {
-                $("#floatting_dir").css('top', window.innerHeight / 4 + 'px');
-            } else {
-                $("#floatting_dir").css('display', 'none');
+                top();
             }
         });
 
@@ -42,15 +53,24 @@
             ishide();
         }
 
-        $("#dir_btn").click(function () {
-            switch ($('#floatting_dir #TableOfContents').css('display')) {
-                case "block":
-                    $("#dir_btn").text("悬浮目录+")
-                    $('#floatting_dir #TableOfContents').hide();
-                    break;
+        $("#dir_btn_open").click(function () {
+            switch ($('#floatting_dir #index').css('display')) {
                 case "none":
-                    $("#dir_btn").text("悬浮目录-")
-                    $('#floatting_dir #TableOfContents').show();
+                    $("#dir_btn_close").show()
+                    $('#floatting_dir #index').show();
+                    $('#floatting_dir header').css("border-bottom", "1px solid gray");
+                    break;
+                default:
+                    break;
+            }
+        });
+
+        $("#dir_btn_close").click(function () {
+            switch ($('#floatting_dir #index').css('display')) {
+                case "block":
+                    $("#dir_btn_close").hide()
+                    $('#floatting_dir #index').hide();
+                    $('#floatting_dir header').css("border-bottom", "");
                     break;
                 default:
                     break;
@@ -67,11 +87,11 @@
                 <div class="post-heading">
                     <div class="tags">
                         {{range .Params.categories}}
-                        <a href="{{ "categories/" | absLangURL }}{{ . | urlize }}" target="_blank" ><i class="fa fa-folder-o" ></i>&nbsp;{{.}}</a>
+                        <a href="{{ " categories/" | absLangURL }}{{ . | urlize }}" target="_blank" ><i class="fa fa-folder-o"></i>&nbsp;{{.}}</a>
                         {{end}}
                         {{ range .Params.tags }}
-                        <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" title="{{ . }}"  target="_blank">
-                        <i class="fa fa-tags" ></i>&nbsp;{{ . }}
+                        <a class="tag" href="{{ "/tags/" | relLangURL }}{{ . | urlize }}" title="{{ . }}" target="_blank">
+                        <i class="fa fa-tags"></i>&nbsp;{{ . }}
                         </a>
                         {{ end }}
 
@@ -113,20 +133,23 @@
 
                 {{ if .Site.Params.floatting_directory_enable }}
                 <!--悬浮目录-->
-                <div id="floatting_dir">
-                    <header>
-                        <h2 id="dir_btn">悬浮目录</h2>
+                <div id="floatting_dir" style="margin: 10px;border: 1px solid gray;z-index:99999;">
+                    <header style="background-color: #f3f3f3;color: black;border-bottom: 1px solid gray;padding: 10px 10px 10px 10px;">
+                        <strong id="dir_btn_open" style="color: black;font-size: large;">目录</strong>
+                        <strong id="dir_btn_close" style="color: black;font-size: large;float: right">x</strong>
                     </header>
-                    {{.TableOfContents}}
+                    <div id="index" style="background-color: #f3f3f3;color: black;padding: 10px;">
+                        {{.TableOfContents}}
+                    </div>
                 </div>
                 {{end}}
 
-                <div>
-                    <header>
-                        <h2>目录</h2>
-                    </header>
-                    {{.TableOfContents}}
-                </div>
+                <!--<div>-->
+                <!--<header>-->
+                <!--<h2>目录</h2>-->
+                <!--</header>-->
+                <!--{{.TableOfContents}}-->
+                <!--</div>-->
                 {{end}}
 
                 {{ end }}
